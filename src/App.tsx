@@ -13,6 +13,8 @@ import Updates from './components/sections/Updates';
 import Impact from './components/sections/Impact';
 import CTA from './components/sections/CTA';
 import Contact from './components/sections/Contact';
+import EscalationMatrix from './components/sections/EscalationMatrix';
+import WhatsAppFloat from './components/WhatsAppFloat';
 
 export default function App() {
   return (
@@ -31,9 +33,11 @@ export default function App() {
         <Impact />
         <CTA />
         <Contact />
+        <EscalationMatrix />
       </main>
       <Footer />
       <MobileCTABar />
+      <WhatsAppFloat />
       {/* Bottom spacer for mobile CTA bar */}
       <div className="h-14 lg:hidden" />
     </div>

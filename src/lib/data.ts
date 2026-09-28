@@ -1,15 +1,11 @@
 export const COMPANY = {
   name: 'Karnish Group of India',
   tagline: 'Solar & Power Engineering',
-  phone: '+91 98765 43210',
-  whatsapp: '919876543210',
-  email: 'info@karnishgroup.in',
-  addressLine: 'Saliabandha Street, Gosaninuagaon',
-  city: 'Berhampur',
-  state: 'Odisha',
-  pin: '760003',
-  address: 'Saliabandha Street, Gosaninuagaon, Berhampur, Ganjam, Odisha 760003',
-  hours: 'Mon – Sat: 9:00 AM – 6:00 PM',
+  phone: '+91 79787 63611',
+  whatsapp: '919073338336',
+  whatsappDisplay: '+91 90733 38336',
+  email: 'care@karnishgroup.com',
+  hours: 'Open 24 × 7',
 };
 
 export const WHATSAPP_LINK = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(
@@ -18,12 +14,47 @@ export const WHATSAPP_LINK = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURI
 
 export const TEL_LINK = `tel:${COMPANY.phone.replace(/\s/g, '')}`;
 
-// Google Maps: search + embed for the office address
-export const GOOGLE_MAPS_QUERY = encodeURIComponent(
-  `${COMPANY.addressLine}, ${COMPANY.city}, Ganjam, ${COMPANY.state} ${COMPANY.pin}`
-);
-export const GOOGLE_MAPS_LINK = `https://www.google.com/maps/search/?api=1&query=${GOOGLE_MAPS_QUERY}`;
-export const GOOGLE_MAPS_EMBED_SRC = `https://maps.google.com/maps?q=${GOOGLE_MAPS_QUERY}&z=15&output=embed`;
+export const LOCATIONS = [
+  {
+    type: 'Head Office',
+    city: 'Berhampur, Odisha',
+    address: 'Saliabandha Street, Gosaninuagaon, Berhampur, Ganjam - 760003',
+  },
+  {
+    type: 'Showroom',
+    city: 'Berhampur, Odisha',
+    address: 'Solaris Galleria, Andhapasara Ring Road, Gosaninuagaon, Berhampur, Ganjam - 760003',
+  },
+  {
+    type: 'Showroom',
+    city: 'Bhubaneswar, Odisha',
+    address: 'Ketuka Complex 2, Jagamara Square, Bhubaneswar - 750001',
+  },
+  {
+    type: 'Showroom',
+    city: 'Noida, Uttar Pradesh',
+    address: 'Main Road, Sector 53, Jhijhore Main Road, Noida, UP - 234560',
+  },
+];
+
+export const ESCALATION = {
+  level1: { email: 'care@karnishgroup.com' },
+  technical: {
+    email: 'directortechnology@karnishgroup.com',
+    name: 'Rajesh Kumar Padhy',
+    phone: '9073338336',
+  },
+  billing: {
+    email: 'operations@karnishgroup.com',
+    name: 'Nisha Nidhi Singh',
+    phone: '9911043958',
+  },
+  level3: {
+    email: 'headmanagement@karnishgroup.com',
+    name: 'Rashmita Sabat',
+    phone: '7978763611',
+  },
+};
 
 export const NAV_LINKS = [
   { label: 'Home', href: '#home' },

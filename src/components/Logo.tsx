@@ -10,7 +10,7 @@ export default function Logo({ className = '' }: LogoProps) {
       <img
         src="/logo.png"
         alt="Karnish Group of India"
-        className="h-10 lg:h-11 w-auto rounded-lg"
+        className="h-12 lg:h-14 w-auto rounded-lg"
       />
     </div>
   );

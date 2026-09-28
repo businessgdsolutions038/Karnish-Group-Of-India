@@ -1,6 +1,6 @@
 import { Phone, MessageCircle, Mail, MapPin, Clock, Facebook, Instagram, Linkedin, Youtube, ArrowUpRight } from 'lucide-react';
 import Logo from './Logo';
-import { COMPANY, NAV_LINKS, WHATSAPP_LINK, TEL_LINK } from '@/lib/data';
+import { COMPANY, LOCATIONS, NAV_LINKS, WHATSAPP_LINK, TEL_LINK } from '@/lib/data';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -94,7 +94,7 @@ export default function Footer() {
               <li>
                 <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="flex items-start gap-3 text-sm text-slate-400 hover:text-brand-300 transition-colors">
                   <MessageCircle className="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-400" />
-                  WhatsApp Us
+                  {COMPANY.whatsappDisplay}
                 </a>
               </li>
               <li>
@@ -103,10 +103,15 @@ export default function Footer() {
                   {COMPANY.email}
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-slate-400">
-                <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-400" />
-                {COMPANY.address}
-              </li>
+              {LOCATIONS.map((loc) => (
+                <li key={loc.address} className="flex items-start gap-3 text-sm text-slate-400">
+                  <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-400" />
+                  <span>
+                    <span className="block text-slate-300 font-medium">{loc.type} – {loc.city}</span>
+                    {loc.address}
+                  </span>
+                </li>
+              ))}
               <li className="flex items-start gap-3 text-sm text-slate-400">
                 <Clock className="w-4 h-4 mt-0.5 flex-shrink-0 text-brand-400" />
                 {COMPANY.hours}
