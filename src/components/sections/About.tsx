@@ -2,7 +2,6 @@ import { Check, ArrowRight } from 'lucide-react';
 import SectionHeading from '../SectionHeading';
 import ScrollReveal from '../ScrollReveal';
 import { LinkButton } from '../Button';
-import { IMAGES } from '@/lib/data';
 
 const bullets = [
   'On-grid & off-grid solar solutions',
@@ -24,16 +23,16 @@ export default function About() {
             <div className="relative">
               <div className="rounded-3xl overflow-hidden shadow-card-hover">
                 <img
-                  src={IMAGES.aboutEngineering}
-                  alt="Solar engineers installing and testing solar power systems"
+                  src="/about-1.jpg"
+                  alt="Karnish Group engineers installing a solar panel mounting structure"
                   className="w-full h-[400px] lg:h-[480px] object-cover"
                 />
               </div>
               {/* Secondary smaller image */}
               <div className="absolute -bottom-8 -right-4 lg:-right-8 w-48 lg:w-56 rounded-2xl overflow-hidden shadow-xl ring-4 ring-white hidden sm:block">
                 <img
-                  src={IMAGES.aboutEngineer}
-                  alt="Solar engineer inspecting solar panels"
+                  src="/about-2.jpg"
+                  alt="Karnish Solar team member at a solar panel installation"
                   className="w-full h-32 lg:h-36 object-cover"
                 />
               </div>

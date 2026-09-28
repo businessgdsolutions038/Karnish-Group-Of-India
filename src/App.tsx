@@ -11,6 +11,7 @@ import Projects from './components/sections/Projects';
 import HowItWorks from './components/sections/HowItWorks';
 import Updates from './components/sections/Updates';
 import Impact from './components/sections/Impact';
+import Gallery from './components/sections/Gallery';
 import CTA from './components/sections/CTA';
 import Contact from './components/sections/Contact';
 import EscalationMatrix from './components/sections/EscalationMatrix';
@@ -29,6 +30,7 @@ export default function App() {
         <WhyChooseUs />
         <Projects />
         <HowItWorks />
+        <Gallery />
         <Updates />
         <Impact />
         <CTA />
