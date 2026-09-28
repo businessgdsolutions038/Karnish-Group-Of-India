@@ -12,6 +12,18 @@ export const WHATSAPP_LINK = `https://wa.me/${COMPANY.whatsapp}?text=${encodeURI
   "Hello, I'd like to know more about your solar solutions."
 )}`;
 
+/** Builds a wa.me link to the website's WhatsApp number with a prefilled message. */
+export const whatsappLink = (message: string) =>
+  `https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(message)}`;
+
+export const WHATSAPP_DOMESTIC_LINK = whatsappLink(
+  "Hello, I'd like to know more about your domestic (home) solar solutions."
+);
+
+export const WHATSAPP_COMMERCIAL_LINK = whatsappLink(
+  "Hello, I'd like to know more about your commercial solar solutions."
+);
+
 export const TEL_LINK = `tel:${COMPANY.phone.replace(/\s/g, '')}`;
 
 export const LOCATIONS = [

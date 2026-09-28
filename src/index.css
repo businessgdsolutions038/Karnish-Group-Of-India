@@ -84,3 +84,72 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* ---------- Splash screen ---------- */
+
+.splash-bg {
+  /* Shown while the picture loads, and if it ever fails to */
+  background:
+    radial-gradient(50rem 24rem at 72% 38%, rgba(96, 165, 250, 0.35), transparent 65%),
+    linear-gradient(180deg, #050d24 0%, #0a1f52 60%, #050d24 100%);
+}
+
+/* Glowing "Get a Quote" badge (display only) that drifts through green, teal, blue and orange */
+@keyframes quote-shift {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
+
+@keyframes quote-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.98); }
+  50% { opacity: 0.9; transform: scale(1.07); }
+}
+
+.quote-glow {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2.75rem;
+  border-radius: 9999px;
+  color: #fff;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(100deg, #089a4f 0%, #0e7490 33%, #1d6ae9 66%, #c2410c 100%);
+  background-size: 300% 100%;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  animation: quote-shift 7s ease-in-out infinite alternate;
+  cursor: default;
+  user-select: none;
+}
+
+/* Blurred copy of the same gradient, animated in step, gives the coloured glow */
+.quote-glow::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  z-index: -1;
+  border-radius: inherit;
+  background-image: inherit;
+  background-size: inherit;
+  filter: blur(18px);
+  opacity: 0.75;
+  animation:
+    quote-shift 7s ease-in-out infinite alternate,
+    quote-pulse 2.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quote-glow,
+  .quote-glow::before {
+    animation: none;
+  }
+  .quote-glow::before {
+    opacity: 0.6;
+  }
+}
