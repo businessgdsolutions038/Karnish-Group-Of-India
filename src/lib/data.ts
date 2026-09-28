@@ -40,7 +40,7 @@ export const LOCATIONS = [
 export const ESCALATION = {
   level1: { email: 'care@karnishgroup.com' },
   technical: {
-    email: 'directortechnology@karnishgroup.com',
+    email: 'technologydirector@karnishgroup.com',
     name: 'Rajesh Kumar Padhy',
     phone: '9073338336',
   },

@@ -30,6 +30,7 @@ export default function Contact() {
         location: (formData.get('location') as string).trim(),
         requirement_type: (formData.get('requirement') as string).trim(),
         message: (formData.get('message') as string).trim(),
+        website: (formData.get('website') as string) || '',
       });
       setStatus('success');
       (e.target as HTMLFormElement).reset();
@@ -112,6 +113,15 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Honeypot: hidden from people, filled by bots */}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                  />
                   <div className="grid sm:grid-cols-2 gap-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-1.5">
