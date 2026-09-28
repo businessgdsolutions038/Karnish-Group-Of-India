@@ -1,14 +1,14 @@
 import { useState, type FormEvent } from 'react';
-import { Phone, MessageCircle, Mail, MapPin, Clock, Send, CheckCircle2, Loader2, Navigation } from 'lucide-react';
+import { Phone, MessageCircle, Mail, MapPin, Clock, Send, CheckCircle2, Loader2 } from 'lucide-react';
 import SectionHeading from '../SectionHeading';
 import ScrollReveal from '../ScrollReveal';
 import { Button } from '../Button';
-import { COMPANY, REQUIREMENT_OPTIONS, WHATSAPP_LINK, TEL_LINK, GOOGLE_MAPS_LINK, GOOGLE_MAPS_EMBED_SRC } from '@/lib/data';
+import { COMPANY, LOCATIONS, REQUIREMENT_OPTIONS, WHATSAPP_LINK, TEL_LINK } from '@/lib/data';
 import { submitEnquiry } from '@/lib/api';
 
 const contactInfo = [
   { icon: Phone, label: 'Phone', value: COMPANY.phone, href: TEL_LINK },
-  { icon: MessageCircle, label: 'WhatsApp', value: COMPANY.phone, href: WHATSAPP_LINK },
+  { icon: MessageCircle, label: 'WhatsApp', value: COMPANY.whatsappDisplay, href: WHATSAPP_LINK },
   { icon: Mail, label: 'Email', value: COMPANY.email, href: `mailto:${COMPANY.email}` },
 ];
 
@@ -79,30 +79,11 @@ export default function Contact() {
                 ))}
               </div>
 
-              <div className="mt-6 p-4 rounded-xl bg-ocean-50/60 border border-ocean-100">
-                <div className="flex items-start gap-3">
-                  <MapPin className="w-5 h-5 text-ocean-600 flex-shrink-0 mt-0.5" />
-                  <div className="flex-1">
-                    <div className="text-xs text-slate-400 font-medium uppercase tracking-wider">Office Address</div>
-                    <div className="text-sm text-slate-700 mt-0.5 leading-relaxed">{COMPANY.address}</div>
-                    <a
-                      href={GOOGLE_MAPS_LINK}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-ocean-700 hover:text-ocean-800 transition-colors"
-                    >
-                      <Navigation className="w-3.5 h-3.5" />
-                      Get Directions
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-4 p-4 rounded-xl bg-amber-50/60 border border-amber-100">
+              <div className="mt-6 p-4 rounded-xl bg-amber-50/60 border border-amber-100">
                 <div className="flex items-start gap-3">
                   <Clock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-xs text-slate-400 font-medium uppercase tracking-wider">Business Hours</div>
+                    <div className="text-xs text-slate-400 font-medium uppercase tracking-wider">Availability</div>
                     <div className="text-sm text-slate-700 mt-0.5">{COMPANY.hours}</div>
                   </div>
                 </div>
@@ -252,28 +233,35 @@ export default function Contact() {
           </ScrollReveal>
         </div>
 
-        {/* Map */}
+        {/* Locations */}
         <ScrollReveal delay={160}>
-          <div className="mt-8 rounded-3xl overflow-hidden shadow-card border border-slate-100 relative">
-            <iframe
-              title="Karnish Group of India location"
-              src={GOOGLE_MAPS_EMBED_SRC}
-              width="100%"
-              height="360"
-              style={{ border: 0 }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="w-full grayscale-[10%]"
-            />
-            <a
-              href={GOOGLE_MAPS_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute bottom-4 right-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white shadow-lg border border-slate-200 text-sm font-semibold text-slate-800 hover:bg-brand-50 hover:border-brand-200 transition-all"
-            >
-              <Navigation className="w-4 h-4 text-brand-600" />
-              View on Google Maps
-            </a>
+          <div className="mt-14">
+            <h3 className="font-display font-bold text-xl text-slate-900 text-center">Our Locations</h3>
+            <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {LOCATIONS.map((loc) => (
+                <div
+                  key={loc.address}
+                  className="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex flex-col"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-brand-50 border border-brand-100 flex items-center justify-center flex-shrink-0">
+                      <MapPin className="w-5 h-5 text-brand-600" />
+                    </div>
+                    <span
+                      className={`text-xs font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full ${
+                        loc.type === 'Head Office'
+                          ? 'bg-brand-600 text-white'
+                          : 'bg-ocean-50 text-ocean-700 border border-ocean-100'
+                      }`}
+                    >
+                      {loc.type}
+                    </span>
+                  </div>
+                  <div className="mt-4 font-display font-semibold text-slate-900">{loc.city}</div>
+                  <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">{loc.address}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </ScrollReveal>
       </div>
