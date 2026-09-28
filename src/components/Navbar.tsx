@@ -68,8 +68,8 @@ export default function Navbar() {
           </div>
 
           <div className="hidden lg:flex items-center gap-3">
-            <LinkButton href="#contact" size="md" variant="primary">
-              Get a Free Consultation
+            <LinkButton href="#quote-form" size="md" variant="primary">
+              Get a Quote
             </LinkButton>
           </div>
 
@@ -122,8 +122,8 @@ export default function Navbar() {
             </div>
           </div>
           <div className="p-5 border-t border-slate-100 space-y-3">
-            <LinkButton href="#contact" size="lg" variant="primary" className="w-full" >
-              Get a Free Consultation
+            <LinkButton href="#quote-form" size="lg" variant="primary" className="w-full" >
+              Get a Quote
             </LinkButton>
             <LinkButton href={TEL_LINK} size="md" variant="outline" className="w-full">
               <Phone className="w-4 h-4" /> Call Now

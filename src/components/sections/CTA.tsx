@@ -28,8 +28,8 @@ export default function CTA() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <LinkButton href="#contact" size="lg" variant="primary">
-                Get a Free Consultation
+              <LinkButton href="#quote-form" size="lg" variant="primary">
+                Get a Quote
                 <ArrowRight className="w-5 h-5" />
               </LinkButton>
               <LinkButton href={TEL_LINK} size="lg" variant="outline" className="!border-white/25 !text-white !bg-white/5 hover:!bg-white/10 hover:!border-white/40">

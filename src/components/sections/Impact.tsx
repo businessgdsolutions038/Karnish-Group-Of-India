@@ -11,10 +11,10 @@ const stats = [
   },
   {
     icon: Zap,
-    value: '500+',
+    value: '4500+',
     suffix: '',
-    label: 'Solar Projects',
-    description: 'Projects completed across residential, commercial and industrial sectors.',
+    label: 'Installations Completed',
+    description: 'Installations completed across residential, commercial and industrial sectors.',
   },
   {
     icon: Battery,

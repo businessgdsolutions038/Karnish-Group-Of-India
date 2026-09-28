@@ -22,11 +22,11 @@ export default function MobileCTABar() {
           <span className="text-xs font-semibold">WhatsApp</span>
         </a>
         <a
-          href="#contact"
+          href="#quote-form"
           className="flex flex-col items-center justify-center gap-1 py-3 text-white bg-brand-600 active:bg-brand-700 transition-colors"
         >
           <FileText className="w-5 h-5" />
-          <span className="text-xs font-semibold">Get Quote</span>
+          <span className="text-xs font-semibold">Get a Quote</span>
         </a>
       </div>
     </div>

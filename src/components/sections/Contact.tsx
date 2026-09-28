@@ -93,7 +93,7 @@ export default function Contact() {
 
           {/* Right: Form */}
           <ScrollReveal delay={120}>
-            <div className="bg-white rounded-3xl p-7 lg:p-8 shadow-card border border-slate-100">
+            <div id="quote-form" className="scroll-mt-28 bg-white rounded-3xl p-7 lg:p-8 shadow-card border border-slate-100">
               {status === 'success' ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-12">
                   <div className="w-16 h-16 rounded-full bg-brand-100 flex items-center justify-center mb-5 animate-pulse-ring">
@@ -219,7 +219,7 @@ export default function Contact() {
                     ) : (
                       <>
                         <Send className="w-5 h-5" />
-                        Request a Consultation
+                        Get a Quote
                       </>
                     )}
                   </Button>

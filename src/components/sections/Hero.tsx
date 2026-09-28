@@ -61,8 +61,8 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <LinkButton href="#contact" size="lg" variant="primary">
-                Get a Free Consultation
+              <LinkButton href="#quote-form" size="lg" variant="primary">
+                Get a Quote
                 <ArrowRight className="w-5 h-5" />
               </LinkButton>
               <LinkButton href="#solutions" size="lg" variant="outline" className="!border-white/25 !text-white !bg-white/5 hover:!bg-white/10 hover:!border-white/40">
@@ -75,9 +75,9 @@ export default function Hero() {
           <div className="relative hidden lg:block">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl ring-1 ring-white/10">
               <img
-                src={IMAGES.heroPortrait}
-                alt="Solar panel installation technician"
-                className="w-full h-[520px] object-cover"
+                src="/hero.jpg"
+                alt="Karnish Group team with solar panels"
+                className="w-full h-auto object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 to-transparent" />
             </div>
@@ -89,7 +89,7 @@ export default function Hero() {
                   <Sun className="w-6 h-6 text-brand-600" />
                 </div>
                 <div>
-                  <div className="text-2xl font-display font-extrabold text-slate-900">500+</div>
+                  <div className="text-2xl font-display font-extrabold text-slate-900">4500+</div>
                   <div className="text-xs text-slate-500 font-medium">Installations Completed</div>
                 </div>
               </div>

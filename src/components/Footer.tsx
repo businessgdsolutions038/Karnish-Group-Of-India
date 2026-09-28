@@ -124,9 +124,14 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-slate-800">
         <div className="container-x py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-500">
-            &copy; {year} {COMPANY.name}. All Rights Reserved.
-          </p>
+          <div className="text-center sm:text-left">
+            <p className="text-sm text-slate-500">
+              &copy; {year} {COMPANY.name}. All Rights Reserved.
+            </p>
+            <p className="mt-1 text-xs text-slate-600">
+              This website is designed and maintained by GD Solutions.
+            </p>
+          </div>
           <div className="flex items-center gap-6">
             <a href="#" className="text-sm text-slate-500 hover:text-brand-300 transition-colors flex items-center gap-1">
               Privacy Policy <ArrowUpRight className="w-3 h-3" />
