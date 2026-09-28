@@ -28,7 +28,7 @@ export default function CTA() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <LinkButton href="#quote-form" size="lg" variant="primary">
+              <LinkButton href="#contact" size="lg" variant="primary">
                 Get a Quote
                 <ArrowRight className="w-5 h-5" />
               </LinkButton>

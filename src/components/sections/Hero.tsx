@@ -61,7 +61,7 @@ export default function Hero() {
             </p>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <LinkButton href="#quote-form" size="lg" variant="primary">
+              <LinkButton href="#contact" size="lg" variant="primary">
                 Get a Quote
                 <ArrowRight className="w-5 h-5" />
               </LinkButton>

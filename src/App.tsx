@@ -56,7 +56,7 @@ export default function App() {
   // (e.g. /#contact) goes straight to the full website.
   const [showSplash, setShowSplash] = useState(() => !hasSectionHash());
 
-  // "Proceed to website" and "Get a Quote" are ordinary links to #home / #quote-form.
+  // "Proceed to website" and "Get a Quote" are ordinary links to #home / #contact.
   useEffect(() => {
     const onHashChange = () => {
       if (hasSectionHash()) setShowSplash(false);
