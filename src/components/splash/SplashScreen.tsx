@@ -9,6 +9,13 @@ const FULL_SITE_HREF = '#home';
 /** Full-screen deep-blue solar background. Swap this for any image URL or another file in /public. */
 const SPLASH_BACKGROUND = '/splash-bg.jpg';
 
+/**
+ * Pictures for the two boxes. These reuse the site's existing stock photos; to use your own,
+ * drop the files into /public and point these at them (e.g. '/domestic-rooftop.jpg').
+ */
+const DOMESTIC_IMAGE = '/domestic-rooftop.jpg';
+const COMMERCIAL_IMAGE = '/commercial-solar.jpg';
+
 interface ChoiceCardProps {
   id: string;
   title: string;
@@ -16,36 +23,64 @@ interface ChoiceCardProps {
   icon: LucideIcon;
   iconClass: string;
   whatsappHref: string;
+  image: string;
+  imageAlt: string;
 }
 
-function ChoiceCard({ id, title, description, icon: Icon, iconClass, whatsappHref }: ChoiceCardProps) {
+function ChoiceCard({
+  id,
+  title,
+  description,
+  icon: Icon,
+  iconClass,
+  whatsappHref,
+  image,
+  imageAlt,
+}: ChoiceCardProps) {
   return (
     <section
       aria-labelledby={id}
-      className="flex flex-1 flex-col justify-center gap-5 rounded-3xl bg-white/90 p-6 shadow-card ring-1 ring-slate-900/5 backdrop-blur-sm sm:flex-row sm:items-center sm:justify-between sm:p-8"
+      className="flex flex-1 flex-col overflow-hidden rounded-3xl bg-white/90 shadow-card ring-1 ring-slate-900/5 backdrop-blur-sm sm:flex-row"
     >
-      <div className="flex items-center gap-4">
-        <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl ${iconClass}`}>
-          <Icon className="h-7 w-7" aria-hidden="true" />
-        </span>
-        <div>
-          <h2 id={id} className="font-display text-3xl font-extrabold text-ocean-950 sm:text-4xl">
-            {title}
-          </h2>
-          <p className="mt-1 text-sm text-slate-600">{description}</p>
-        </div>
+      {/* Picture: across the top on phones, down the left side from sm up */}
+      <div className="relative h-40 shrink-0 bg-gradient-to-br from-ocean-900 to-ocean-700 sm:h-auto sm:w-56 lg:w-60">
+        <img
+          src={image}
+          alt={imageAlt}
+          decoding="async"
+          onError={(e) => {
+            // If the photo ever fails to load, fall back to the blue panel instead of a broken-image icon
+            e.currentTarget.style.display = 'none';
+          }}
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
       </div>
 
-      <a
-        href={whatsappHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Chat with us on WhatsApp about ${title.toLowerCase()} solar`}
-        className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-[#0f7d43] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0b6335] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0f7d43] focus-visible:ring-offset-2"
-      >
-        <MessageCircle className="h-5 w-5" fill="currentColor" aria-hidden="true" />
-        Chat on WhatsApp
-      </a>
+      <div className="flex flex-1 flex-col justify-center gap-5 p-6 sm:p-7">
+        <div className="flex items-center gap-4">
+          <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl ${iconClass}`}>
+            <Icon className="h-7 w-7" aria-hidden="true" />
+          </span>
+          <div>
+            <h2 id={id} className="font-display text-3xl font-extrabold text-ocean-950 sm:text-4xl">
+              {title}
+            </h2>
+            <p className="mt-1 text-sm text-slate-600">{description}</p>
+          </div>
+        </div>
+
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Chat with us on WhatsApp about ${title.toLowerCase()} solar`}
+          className="inline-flex items-center justify-center gap-2 self-start whitespace-nowrap rounded-xl bg-[#0f7d43] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0b6335] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0f7d43] focus-visible:ring-offset-2 max-sm:w-full"
+        >
+          <MessageCircle className="h-5 w-5" fill="currentColor" aria-hidden="true" />
+          Chat on WhatsApp
+        </a>
+      </div>
     </section>
   );
 }
@@ -91,6 +126,8 @@ export default function SplashScreen() {
               icon={Home}
               iconClass="bg-amber-100 text-amber-700"
               whatsappHref={WHATSAPP_DOMESTIC_LINK}
+              image={DOMESTIC_IMAGE}
+              imageAlt="Rooftop solar panels installed on a home"
             />
             <ChoiceCard
               id="splash-commercial"
@@ -99,6 +136,8 @@ export default function SplashScreen() {
               icon={Building2}
               iconClass="bg-ocean-100 text-ocean-700"
               whatsappHref={WHATSAPP_COMMERCIAL_LINK}
+              image={COMMERCIAL_IMAGE}
+              imageAlt="Commercial solar installation on a business building"
             />
           </div>
 
