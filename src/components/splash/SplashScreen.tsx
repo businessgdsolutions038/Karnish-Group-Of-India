@@ -1,6 +1,7 @@
 import type { LucideIcon } from 'lucide-react';
 import { ArrowRight, Building2, Home, MessageCircle } from 'lucide-react';
 import SplashEscalation from './SplashEscalation';
+import SplashTestimonials from './SplashTestimonials';
 import { WHATSAPP_COMMERCIAL_LINK, WHATSAPP_DOMESTIC_LINK } from '@/lib/data';
 
 /** "Proceed to website" lands on the top of the full site (an in-page hash). */
@@ -158,6 +159,8 @@ export default function SplashScreen() {
             />
           </a>
         </div>
+
+        <SplashTestimonials />
       </main>
     </div>
   );
