@@ -9,10 +9,7 @@ const FULL_SITE_HREF = '#home';
 /** Full-screen deep-blue solar background. Swap this for any image URL or another file in /public. */
 const SPLASH_BACKGROUND = '/splash-bg.jpg';
 
-/**
- * Pictures for the two boxes. These reuse the site's existing stock photos; to use your own,
- * drop the files into /public and point these at them (e.g. '/domestic-rooftop.jpg').
- */
+/** Pictures that fill the Domestic and Commercial boxes (files in /public). */
 const DOMESTIC_IMAGE = '/domestic-rooftop.jpg';
 const COMMERCIAL_IMAGE = '/commercial-solar.jpg';
 
@@ -40,33 +37,36 @@ function ChoiceCard({
   return (
     <section
       aria-labelledby={id}
-      className="flex flex-1 flex-col overflow-hidden rounded-3xl bg-white/90 shadow-card ring-1 ring-slate-900/5 backdrop-blur-sm sm:flex-row"
+      className="relative isolate flex min-h-[240px] flex-1 overflow-hidden rounded-3xl bg-gradient-to-br from-ocean-900 to-ocean-700 shadow-card ring-1 ring-slate-900/5 sm:min-h-[260px]"
     >
-      {/* Picture: across the top on phones, down the left side from sm up */}
-      <div className="relative h-40 shrink-0 bg-gradient-to-br from-ocean-900 to-ocean-700 sm:h-auto sm:w-56 lg:w-60">
-        <img
-          src={image}
-          alt={imageAlt}
-          decoding="async"
-          onError={(e) => {
-            // If the photo ever fails to load, fall back to the blue panel instead of a broken-image icon
-            e.currentTarget.style.display = 'none';
-          }}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
-      </div>
+      {/* The picture fills the whole box */}
+      <img
+        src={image}
+        alt={imageAlt}
+        decoding="async"
+        onError={(e) => {
+          // If the photo ever fails to load, fall back to the blue panel instead of a broken-image icon
+          e.currentTarget.style.display = 'none';
+        }}
+        className="absolute inset-0 -z-10 h-full w-full object-cover"
+      />
+      {/* Darkening so the white text stays readable: from the bottom on phones, from the left on larger screens */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-t from-ocean-950/90 via-ocean-950/45 to-ocean-950/10 sm:hidden" />
+      <div aria-hidden="true" className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ocean-950/90 via-ocean-950/50 to-ocean-950/5 sm:block" />
 
-      <div className="flex flex-1 flex-col justify-center gap-5 p-6 sm:p-7">
+      <div className="flex w-full flex-col justify-end gap-5 p-6 sm:justify-center sm:p-8">
         <div className="flex items-center gap-4">
-          <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl ${iconClass}`}>
+          <span className={`grid h-14 w-14 shrink-0 place-items-center rounded-2xl shadow-md ${iconClass}`}>
             <Icon className="h-7 w-7" aria-hidden="true" />
           </span>
           <div>
-            <h2 id={id} className="font-display text-3xl font-extrabold text-ocean-950 sm:text-4xl">
+            <h2
+              id={id}
+              className="font-display text-3xl font-extrabold text-white [text-shadow:0_2px_10px_rgba(0,0,0,0.5)] sm:text-4xl"
+            >
               {title}
             </h2>
-            <p className="mt-1 text-sm text-slate-600">{description}</p>
+            <p className="mt-1 text-sm text-white/90 [text-shadow:0_1px_6px_rgba(0,0,0,0.5)]">{description}</p>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ function ChoiceCard({
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Chat with us on WhatsApp about ${title.toLowerCase()} solar`}
-          className="inline-flex items-center justify-center gap-2 self-start whitespace-nowrap rounded-xl bg-[#0f7d43] px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0b6335] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0f7d43] focus-visible:ring-offset-2 max-sm:w-full"
+          className="inline-flex items-center justify-center gap-2 self-start whitespace-nowrap rounded-xl bg-[#0f7d43] px-6 py-3.5 text-sm font-semibold text-white shadow-lg transition-colors hover:bg-[#0b6335] focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-ocean-950 max-sm:w-full"
         >
           <MessageCircle className="h-5 w-5" fill="currentColor" aria-hidden="true" />
           Chat on WhatsApp
