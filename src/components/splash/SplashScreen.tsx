@@ -146,7 +146,9 @@ export default function SplashScreen() {
           <SplashEscalation />
         </div>
 
-        {/* Centred under the Commercial card and the escalation matrix */}
+        <SplashTestimonials />
+
+        {/* Proceed button placed below the testimonial carousel */}
         <div className="mt-10 flex justify-center">
           <a
             href={FULL_SITE_HREF}
@@ -159,8 +161,6 @@ export default function SplashScreen() {
             />
           </a>
         </div>
-
-        <SplashTestimonials />
       </main>
     </div>
   );
