@@ -74,7 +74,7 @@ export const NAV_LINKS = [
   { label: 'Solar Solutions', href: '#solutions' },
   { label: 'Products', href: '#products' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Updates', href: '#updates' },
+  { label: 'News', href: '#news' },
   { label: 'Contact', href: '#contact' },
 ];
 

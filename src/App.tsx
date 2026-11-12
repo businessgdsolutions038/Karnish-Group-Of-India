@@ -10,13 +10,15 @@ import Batteries from './components/sections/Batteries';
 import WhyChooseUs from './components/sections/WhyChooseUs';
 import Projects from './components/sections/Projects';
 import HowItWorks from './components/sections/HowItWorks';
-import Updates from './components/sections/Updates';
+import News from './components/sections/News';
 import Impact from './components/sections/Impact';
 import Gallery from './components/sections/Gallery';
+import Testimonials from './components/sections/Testimonials';
 import CTA from './components/sections/CTA';
 import Contact from './components/sections/Contact';
 import EscalationMatrix from './components/sections/EscalationMatrix';
 import WhatsAppFloat from './components/WhatsAppFloat';
+import GrievanceBot from './components/GrievanceBot';
 import SplashScreen from './components/splash/SplashScreen';
 
 /** True when the URL points at a section of the full site, e.g. /#contact or /#home. */
@@ -36,15 +38,20 @@ function FullSite() {
         <Projects />
         <HowItWorks />
         <Gallery />
-        <Updates />
+        <News />
         <Impact />
+        <Testimonials />
         <CTA />
         <Contact />
         <EscalationMatrix />
       </main>
       <Footer />
       <MobileCTABar />
-      <WhatsAppFloat />
+      {/* WhatsApp button now lives on the left; the complaint bot takes the right corner */}
+      <div className="[&>*]:!left-4 [&>*]:!right-auto lg:[&>*]:!left-6">
+        <WhatsAppFloat />
+      </div>
+      <GrievanceBot />
       {/* Bottom spacer for mobile CTA bar */}
       <div className="h-14 lg:hidden" />
     </div>

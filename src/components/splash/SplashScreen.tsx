@@ -2,13 +2,17 @@ import type { LucideIcon } from 'lucide-react';
 import { ArrowRight, Building2, Home, MessageCircle } from 'lucide-react';
 import SplashEscalation from './SplashEscalation';
 import SplashTestimonials from './SplashTestimonials';
+import GrievanceBot from '../GrievanceBot';
 import { WHATSAPP_COMMERCIAL_LINK, WHATSAPP_DOMESTIC_LINK } from '@/lib/data';
 
 /** "Proceed to website" lands on the top of the full site (an in-page hash). */
 const FULL_SITE_HREF = '#home';
 
-/** Full-screen deep-blue solar background. Swap this for any image URL or another file in /public. */
+/** Shown while the video loads (or if it cannot play). A file in /public. */
 const SPLASH_BACKGROUND = '/splash-bg.jpg';
+
+/** Full-screen background video, already reversed, so it plays backward. Loops forever. File in /public. */
+const SPLASH_VIDEO = '/splash-video-reversed.mp4';
 
 /** Pictures that fill the Domestic and Commercial boxes (files in /public). */
 const DOMESTIC_IMAGE = '/domestic-rooftop.jpg';
@@ -89,13 +93,18 @@ function ChoiceCard({
 export default function SplashScreen() {
   return (
     <div className="splash-bg relative isolate flex min-h-[100dvh] flex-col overflow-hidden">
-      {/* Full-screen deep-blue solar picture; the top is darkened so the logo stays crisp */}
-      <div aria-hidden="true" className="absolute inset-0 -z-10">
-        <img
-          src={SPLASH_BACKGROUND}
-          alt=""
-          fetchPriority="high"
+      {/* Full-screen video (playing backward), fixed to the screen so it never stretches while the page scrolls.
+          The top is darkened so the logo stays crisp. */}
+      <div aria-hidden="true" className="fixed inset-0 -z-10 bg-ocean-950">
+        <video
           className="h-full w-full object-cover"
+          src={SPLASH_VIDEO}
+          poster={SPLASH_BACKGROUND}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#050d24]/70 via-transparent to-[#050d24]/40" />
       </div>
@@ -104,7 +113,7 @@ export default function SplashScreen() {
         <img
           src="/logo-light.png"
           alt="Karnish Group of India"
-          className="h-28 w-auto drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)] sm:h-32 lg:h-40"
+          className="h-28 w-auto contrast-125 saturate-125 drop-shadow-[0_0_1px_rgba(255,255,255,0.9)] drop-shadow-[0_3px_14px_rgba(0,0,0,0.8)] sm:h-32 lg:h-40"
         />
         <h1 className="font-display text-xl font-semibold italic text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.5)] sm:text-2xl lg:text-3xl">
           Cleaner Energy, Brighter Tomorrow
@@ -162,6 +171,8 @@ export default function SplashScreen() {
           </a>
         </div>
       </main>
+
+      <GrievanceBot variant="splash" />
     </div>
   );
 }
