@@ -97,7 +97,7 @@ const CSS = `
 .grv-launcher:hover{animation-play-state:paused;transform:scale(1.05)}
 .grv-launcher:focus-visible{outline:3px solid #fff;outline-offset:4px}
 @media (min-width:1024px){.grv-text{font-size:1.25rem}.grv-icon{height:3.25rem;width:3.25rem}.grv-inner{padding:.8rem 1.7rem .8rem .9rem}}
-@media (max-width:420px){.grv-text{font-size:.95rem;white-space:normal;line-height:1.1;max-width:6.5rem}.grv-icon{height:2.6rem;width:2.6rem}.grv-inner{padding:.55rem 1rem .55rem .6rem;gap:.5rem}}
+@media (max-width:639px){.grv-text{font-size:.9rem}.grv-icon{height:2.25rem;width:2.25rem}.grv-icon svg{height:1.25rem;width:1.25rem}.grv-inner{padding:.4rem .95rem .4rem .45rem;gap:.5rem}.grv-ring{inset:-3px}}
 
 .grv-window{animation:grv-pop .35s cubic-bezier(.2,.9,.3,1.2) both;transform-origin:bottom right}
 .grv-header{background:linear-gradient(110deg,#0b2a63,#0f7d43,#0b2a63);background-size:200% 100%;animation:grv-bg 8s linear infinite}
@@ -128,7 +128,7 @@ export default function GrievanceBot({ variant = 'site' }: { variant?: 'site' | 
   const step = STEPS[stepIdx];
   const launcherPos =
     variant === 'splash'
-      ? 'fixed right-3 top-32 sm:right-4 sm:top-36 lg:bottom-6 lg:right-6 lg:top-auto'
+      ? 'fixed bottom-4 right-3 sm:bottom-5 sm:right-4 lg:bottom-6 lg:right-6'
       : 'fixed bottom-20 right-4 lg:bottom-6 lg:right-6';
 
   // Chat history: every answered question, then the current one
@@ -202,7 +202,10 @@ export default function GrievanceBot({ variant = 'site' }: { variant?: 'site' | 
             <span className="grv-icon" aria-hidden="true">
               <Headset className="h-7 w-7" />
             </span>
-            <span className="grv-text">Register a complaint</span>
+            <span className="grv-text">
+              <span className="sm:hidden">Complaint</span>
+              <span className="hidden sm:inline">Register a complaint</span>
+            </span>
           </span>
         </button>
       )}

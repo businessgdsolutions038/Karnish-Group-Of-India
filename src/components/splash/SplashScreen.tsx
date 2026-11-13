@@ -120,7 +120,7 @@ export default function SplashScreen() {
         </h1>
       </header>
 
-      <main className="container-x flex-1 pb-10 pt-8 lg:pt-12">
+      <main className="container-x flex-1 pb-24 pt-8 lg:pb-10 lg:pt-12">
         <div className="mx-auto grid max-w-6xl items-stretch gap-6 lg:grid-cols-[1.35fr_1fr] lg:gap-8">
           {/* Left column: Get a Quote, 1 Domestic, 2 Commercial */}
           <div className="flex flex-col gap-5">
